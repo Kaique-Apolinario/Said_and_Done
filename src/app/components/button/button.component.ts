@@ -3,7 +3,7 @@ import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'app-button',
-  imports: [],
+  standalone: true,
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss'
 })

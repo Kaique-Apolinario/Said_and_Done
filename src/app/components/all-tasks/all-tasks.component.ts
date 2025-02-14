@@ -1,13 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Task } from '../../entity/Task';
+import { TasksService } from '../../services/tasks.service';
+import { ButtonComponent } from "../button/button.component";
 
 @Component({
   selector: 'app-all-tasks',
-  imports: [],
+  standalone: true,
   templateUrl: './all-tasks.component.html',
-  styleUrl: './all-tasks.component.scss'
+  styleUrl: './all-tasks.component.scss',
+  imports: [ButtonComponent]
 })
-export class AllTasksComponent {
+export class AllTasksComponent{
+
+
 
   taskList: Task[] = [{ "id": 0, "name": "Zero", "finished": false }, {
     "id": 1, "name": "One", "finished": false
