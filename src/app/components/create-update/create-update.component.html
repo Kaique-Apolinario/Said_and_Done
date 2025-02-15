@@ -1,1 +1,8 @@
-<h1>tar</h1>
+<form class="overflow-y-hidden">
+    <div class="createTaskArea">
+        <label for="taskname">Task name</label>
+        <input type="text" id="taskname" #ctrl="ngModel" name="taskname" [(ngModel)]="addTaskForms" required (ngModelChange)="sendTaskName()">
+        <br>
+    </div>
+    <p>{{addTaskForms}}</p>
+</form>

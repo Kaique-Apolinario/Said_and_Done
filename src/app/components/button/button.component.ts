@@ -9,4 +9,5 @@ import { AppComponent } from '../../app.component';
 })
 export class ButtonComponent {
   label = input('');
+
 }
