@@ -16,7 +16,11 @@ export class TasksService {
     return this.http.get<Task[]>(this.apiUrl);
   } 
 
-  addTasks(taskList:Task[]):Observable<Task[]>{
-    return this.http.post<Task[]>(this.apiUrl + "saveAll", taskList);
+  addTasks(task:Task):Observable<Task>{
+    return this.http.post<Task>(this.apiUrl + "save", task);
+  }
+
+  deleteTask(task:Task):Observable<Task>{
+    return this.http.delete<Task>(this.apiUrl + task.id);
   }
 }

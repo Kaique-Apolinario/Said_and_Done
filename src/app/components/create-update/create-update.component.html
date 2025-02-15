@@ -1,8 +1,12 @@
-<form class="overflow-y-hidden">
-    <div class="createTaskArea">
+<form class="overflow-y-hidden d-flex flex-column mt-2" (ngSubmit)="sendTaskName()">
+    <div class="createTaskArea d-flex flex-column text-align-center text-center">
         <label for="taskname">Task name</label>
-        <input type="text" id="taskname" #ctrl="ngModel" name="taskname" [(ngModel)]="addTaskForms" required (ngModelChange)="sendTaskName()">
+        <input type="text" class="rounded-pill p-2" id="taskname" #ctrl="ngModel" name="taskname" [(ngModel)]="addTaskForms" required>
         <br>
     </div>
-    <p>{{addTaskForms}}</p>
+    <div class="d-flex w-100 justify-content-around">
+        <app-button class="col-5 my-2" label="Done" routerLinkActive="active" ariaCurrentWhenActive="page"></app-button>
+        <app-button class="col-5 my-2" label="Cancel" routerLink="/home" routerLinkActive="active"
+            ariaCurrentWhenActive="page"></app-button>
+    </div>
 </form>

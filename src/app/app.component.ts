@@ -12,18 +12,5 @@ import { CreateUpdateComponent } from './components/create-update/create-update.
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit{
-
-    private router:Router = inject(Router);
-    currentUrl: string = "";
-    itWorked: string = "";
-    
-    ngOnInit(): void {
-      this.router.events.subscribe(() => {this.currentUrl = this.router.url});
-    }
-  
-    receiveTaskName(taskName: any){
-      console.log("DALKHOMANN")
-      this.itWorked = taskName;
-    }
-}
+export class AppComponent{
+  }

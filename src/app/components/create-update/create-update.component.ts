@@ -2,11 +2,12 @@ import { Component, EventEmitter, HostListener, inject, Output, ElementRef } fro
 import { ButtonComponent } from "../button/button.component";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TasksService } from '../../services/tasks.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { Task } from '../../entity/Task';
 
 @Component({
   selector: 'app-create-update',
-  imports: [ReactiveFormsModule, ButtonComponent, FormsModule],
+  imports: [ReactiveFormsModule, ButtonComponent, FormsModule, RouterLink],
   standalone: true,
   templateUrl: './create-update.component.html',
   styleUrl: './create-update.component.scss',
@@ -17,12 +18,10 @@ export class CreateUpdateComponent {
   private router:Router = inject(Router);
 
   addTaskForms:string = "";
-
-  @Output() taskNameHERE = new EventEmitter<string>();
   
   sendTaskName(){
-    this.taskNameHERE.emit(this.addTaskForms);
-    console.log(this.addTaskForms);
+    this.taskService.addTasks({"name": this.addTaskForms, "finished": false}).subscribe();
+    this.router.navigateByUrl("/");
+    
   }
-
 }
