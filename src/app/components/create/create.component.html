@@ -1,10 +1,11 @@
-<form class="overflow-y-hidden d-flex flex-column mt-2" (ngSubmit)="sendTaskName()">
-    <div class="createTaskArea d-flex flex-column text-align-center text-center">
+<form class="overflow-y-hidden d-flex flex-column mt-3" (ngSubmit)="sendTaskName()">
+    <div class="d-flex flex-column text-align-center text-center">
         <label for="taskname">Task name</label>
-        <input type="text" class="rounded-pill p-2" id="taskname" #ctrl="ngModel" name="taskname" [(ngModel)]="addTaskForms" required>
+        <input class="rounded-pill p-2" type="text" id="taskname" name="taskname" [(ngModel)]="addTaskForms">
         <br>
+
     </div>
-    <div class="d-flex w-100 justify-content-around">
+    <div class="d-flex w-100 justify-content-around mb-4">
         <app-button class="col-5 my-2" label="Done" routerLinkActive="active" ariaCurrentWhenActive="page"></app-button>
         <app-button class="col-5 my-2" label="Cancel" routerLink="/home" routerLinkActive="active"
             ariaCurrentWhenActive="page"></app-button>

@@ -6,13 +6,13 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { Task } from '../../entity/Task';
 
 @Component({
-  selector: 'app-create-update',
-  imports: [ReactiveFormsModule, ButtonComponent, FormsModule, RouterLink],
+  selector: 'app-create',
+  imports: [ReactiveFormsModule, ButtonComponent, FormsModule, RouterLink, FormsModule],
   standalone: true,
-  templateUrl: './create-update.component.html',
-  styleUrl: './create-update.component.scss',
+  templateUrl: './create.component.html',
+  styleUrl: './create.component.scss',
 })
-export class CreateUpdateComponent {
+export class CreateComponent {
 
   private taskService:TasksService = inject(TasksService);
   private router:Router = inject(Router);
@@ -20,6 +20,8 @@ export class CreateUpdateComponent {
   addTaskForms:string = "";
   
   sendTaskName(){
+    if (!this.addTaskForms.trim()) 
+      return alert("Oops! Empty name.");
     this.taskService.addTasks({"name": this.addTaskForms, "finished": false}).subscribe();
     this.router.navigateByUrl("/");
     

@@ -1,0 +1,12 @@
+<form class="overflow-y-hidden d-flex flex-column mt-3" (ngSubmit)="updateName()">
+    <div class="d-flex flex-column text-align-center text-center">
+        <label for="taskname">New name of the task:</label>
+        <input type="text" class="rounded-pill p-2" id="taskname" name="taskname" [(ngModel)]="newTask.name">
+        <br>
+    </div>
+    <div class="d-flex w-100 justify-content-around mb-4">
+        <app-button class="col-5 my-2" label="Done" routerLinkActive="active" ariaCurrentWhenActive="page"></app-button>
+        <app-button class="col-5 my-2" label="Cancel" routerLink="/home" routerLinkActive="active"
+            ariaCurrentWhenActive="page"></app-button>
+    </div>
+</form>

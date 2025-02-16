@@ -1,5 +1,4 @@
 import { Component, input } from '@angular/core';
-import { AppComponent } from '../../app.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({

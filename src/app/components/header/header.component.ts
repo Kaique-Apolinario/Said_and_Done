@@ -5,7 +5,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, ButtonComponent],
+  imports: [RouterLink, ButtonComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
