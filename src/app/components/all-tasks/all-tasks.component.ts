@@ -16,7 +16,7 @@ export class AllTasksComponent implements OnInit{
   private taskService:TasksService = inject(TasksService)
   private router:Router = inject(Router)
 
-  taskList:Task[] = [];
+  taskList:Task[] = [{name: "AAAAAAAAAAAAAAAAAAAAAAA", finished: false},{name: "AAAAAAAAAAAAAAAAAAAAAAA", finished: false},{name: "AAAAAAAAAAAAAAAAAAAAAAA", finished: false},{name: "AAAAAAAAAAAAAAAAAAAAAAA", finished: false},{name: "AAAAAAAAAAAAAAAAAAAAAAA", finished: false},{name: "AAAAAAAAAAAAAAAAAAAAAAA", finished: false},{name: "AAAAAAAAAAAAAAAAAAAAAAA", finished: false}];
 
 
   ngOnInit(): void {

@@ -1,12 +1,12 @@
-<div class="w-100 pb-5">
+<div class="w-100">
     <app-header></app-header>
     @for (task of taskList; track task.id){
     <li>
-        <p class="text-capitalize d-block text-truncate h1">{{task.name}}</p>
+        <p class="text-capitalize text-truncate m-0">{{task.name}}</p>
         <div class="TrashNPencil">
             <i class="fa-solid fa-trash" (click)="deleteTask(task)"></i>
             <i class="fa-solid fa-pencil" (click)="updateTask(task)" routerLink="/update"></i>
-        </div>
+    </div>
     </li>
     }
 </div>
