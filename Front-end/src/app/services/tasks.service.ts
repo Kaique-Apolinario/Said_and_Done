@@ -16,6 +16,7 @@ export class TasksService {
      catchError(error => {
       alert("An error occurred. Sorry! Try reloading the page.")
       throw error;
+      console.log("Failed to retrieve tasks from the database.")
      }));
   } 
 
@@ -25,6 +26,7 @@ export class TasksService {
      catchError(error => {
       alert("An error occurred. Sorry! Try reloading the page")
       throw error;
+      console.log("Failed to retrieve this specific task from the database.")
      }));
   } 
 
@@ -34,6 +36,7 @@ export class TasksService {
      catchError(error => {
       alert("An error occurred. Sorry! Try reloading the page")
       throw error;
+      console.log("Failed to save into the database API.")
      }));
   } 
 
@@ -43,6 +46,7 @@ export class TasksService {
      catchError(error => {
       alert("An error occurred. Sorry! Try reloading the page")
       throw error;
+      console.log("Failed to delete this task.")
      }));
   } 
 
@@ -52,6 +56,7 @@ export class TasksService {
      catchError(error => {
       alert("An error occurred. Sorry! Try reloading the page.")
       throw error;
+      console.log("Failed to update this task.")
      }));
   } 
 }
