@@ -1,6 +1,6 @@
 <form class="overflow-y-hidden d-flex flex-column mt-3" (ngSubmit)="updateName()">
     <div class="d-flex flex-column text-align-center text-center">
-        <label for="taskname">New name of the task:</label>
+        <label for="taskname" class="fw-bold">New name of the task:</label>
         <input type="text" class="rounded-pill p-2" id="taskname" name="taskname" [(ngModel)]="newTask.name">
         <br>
     </div>

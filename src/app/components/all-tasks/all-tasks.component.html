@@ -1,4 +1,4 @@
-<div class="w-100">
+<div class="w-100 pb-4">
     <app-header></app-header>
     @for (task of taskList; track task.id){
     <li>
@@ -6,7 +6,7 @@
         <div class="TrashNPencil">
             <i class="fa-solid fa-trash" (click)="deleteTask(task)"></i>
             <i class="fa-solid fa-pencil" (click)="updateTask(task)" routerLink="/update"></i>
-    </div>
+        </div>
     </li>
     }
 </div>
