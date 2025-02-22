@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Task } from '../entity/Task';
-import { catchError, Observable, retry } from 'rxjs';
+import { catchError, Observable, of, retry } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,11 @@ export class TasksService {
   private apiUrl: string = "http://localhost:8080/";
 
   getTasks():Observable<Task[]>{
-    return this.http.get<Task[]>(this.apiUrl)
-      console.log("Failed to retrieve tasks from the database.")
+    return this.http.get<Task[]>(this.apiUrl).pipe(
+     catchError(() => {
+      console.log("Failed to retrieve tasks from the database.");
+      return of([])
+    }));
   } 
 
   getTaskById(taskId: number):Observable<Task> {
@@ -20,8 +23,9 @@ export class TasksService {
       retry(1),
      catchError(error => {
       alert("An error occurred. Sorry! Try reloading the page")
-      throw error;
       console.log("Failed to retrieve this specific task from the database.")
+      throw error;
+
      }));
   } 
 
@@ -30,8 +34,8 @@ export class TasksService {
       retry(1),
      catchError(error => {
       alert("An error occurred. Sorry! Try reloading the page")
-      throw error;
       console.log("Failed to save into the database API.")
+      throw error;
      }));
   } 
 
@@ -40,18 +44,21 @@ export class TasksService {
       retry(1),
      catchError(error => {
       alert("An error occurred. Sorry! Try reloading the page")
-      throw error;
       console.log("Failed to delete this task.")
+      throw error;
      }));
   } 
 
   updateTask(oldTask:Task, newTask:Task):Observable<Task>{
-    return this.http.put<Task>(this.apiUrl + oldTask.id, newTask).pipe(
+    return this.http.put<Task>(this.apiUrl + oldTask.id, newTask)
+    
+    
+    .pipe(
       retry(1),
      catchError(error => {
       alert("An error occurred. Sorry! Try reloading the page.")
-      throw error;
       console.log("Failed to update this task.")
+      throw error;
      }));
   } 
 }

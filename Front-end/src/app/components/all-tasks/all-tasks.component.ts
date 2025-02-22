@@ -3,13 +3,14 @@ import { Task } from '../../entity/Task';
 import { TasksService } from '../../services/tasks.service';
 import { HeaderComponent } from '../header/header.component';
 import { Router, RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-all-tasks',
   standalone: true,
   templateUrl: './all-tasks.component.html',
   styleUrl: './all-tasks.component.scss',
-  imports: [HeaderComponent, RouterLink]
+  imports: [HeaderComponent, RouterLink, CommonModule]
 })
 export class AllTasksComponent implements OnInit{
 
@@ -29,11 +30,15 @@ export class AllTasksComponent implements OnInit{
   }
 
   updateTask(task: Task){
-    try{
-    this.router.navigate(["/update/", task.id])
-  } catch(e){
-    console.log("Failed to found a update route to this task.")
-  }
-  }
+      this.router.navigate(["/update", task.id]).catch(e => {
+        alert("An error occurred. Sorry! Try reloading the page"),
+        console.error("Failed to found a update route to this task.");
+      })
+    }
 
+  toggleStatus(task: Task){
+    const temporaryTask: Task = task;
+    temporaryTask.finished = !temporaryTask.finished;
+    this.taskService.updateTask(task, temporaryTask).subscribe();
+  }
 }

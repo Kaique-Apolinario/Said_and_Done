@@ -20,6 +20,7 @@ li > p {
            -moz-user-select: none; 
             -ms-user-select: none;
                 user-select: none;       
+
 }
 
 .TrashNPencil {
@@ -71,4 +72,14 @@ li:hover{
     color: blue;
     transition: all 0.1s ease-in-out;
     transform: scale(1.25);
+}
+
+.concluded {
+    transition: 0.5s ease-in-out ;
+    outline: 3px solid green;
+    outline-offset: 1px;
+    background-color: rgba(34, 255, 0, 0.344);
+    .TrashNPencil {
+        background-color: rgba(34, 255, 0, 0);
+    }
 }

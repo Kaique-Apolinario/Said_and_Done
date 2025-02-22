@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ToDoCRUD": {
+    "": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/to-do-crud",
+            "outputPath": "dist/task-manager",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -62,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ToDoCRUD:build:production"
+              "buildTarget": "TaskManager:build:production"
             },
             "development": {
-              "buildTarget": "ToDoCRUD:build:development"
+              "buildTarget": "TaskManager:build:development"
             }
           },
           "defaultConfiguration": "development"
