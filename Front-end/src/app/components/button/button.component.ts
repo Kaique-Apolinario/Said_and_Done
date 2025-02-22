@@ -4,7 +4,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-button',
   standalone: true,
-  imports: [RouterOutlet, RouterLink],
+  imports: [],
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss'
 })

@@ -16,7 +16,7 @@ export class AllTasksComponent implements OnInit{
   private taskService:TasksService = inject(TasksService)
   private router:Router = inject(Router)
 
-  taskList:Task[] = [{name: "AAAAAAAAAAAAAAAAAAAAAAA", finished: false},{name: "AAAAAAAAAAAAAAAAAAAAAAA", finished: false},{name: "AAAAAAAAAAAAAAAAAAAAAAA", finished: false},{name: "AAAAAAAAAAAAAAAAAAAAAAA", finished: false},{name: "AAAAAAAAAAAAAAAAAAAAAAA", finished: false},{name: "AAAAAAAAAAAAAAAAAAAAAAA", finished: false},{name: "AAAAAAAAAAAAAAAAAAAAAAA", finished: false}];
+  taskList:Task[] = [];
 
 
   ngOnInit(): void {
@@ -29,7 +29,11 @@ export class AllTasksComponent implements OnInit{
   }
 
   updateTask(task: Task){
-    this.router.navigate(["/update/", task.id]);
+    try{
+    this.router.navigate(["/update/", task.id])
+  } catch(e){
+    console.log("Failed to found a update route to this task.")
+  }
   }
 
 }

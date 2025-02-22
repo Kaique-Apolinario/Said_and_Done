@@ -9,13 +9,11 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import com.kaiqueapol.smartodo.exceptions.TaskNotFoundException;
 
 @ControllerAdvice
-public class RestExceptionHandler extends ResponseEntityExceptionHandler{
+public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
 	@ExceptionHandler(TaskNotFoundException.class)
 	private ResponseEntity<String> taskNotFoundHandler(TaskNotFoundException e) {
-		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Task not found.");
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
 	}
-	
-	
-	
+
 }

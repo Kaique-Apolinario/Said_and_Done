@@ -10,9 +10,11 @@ import com.kaiqueapol.smartodo.exceptions.TaskNotFoundException;
 import com.kaiqueapol.smartodo.repositories.TaskRepository;
 
 import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Transactional
+@Slf4j
 public class TaskService {
 	private TaskRepository taskRepo;
 
@@ -23,23 +25,27 @@ public class TaskService {
 	public List<Task> findAll() {
 		List<Task> taskList = taskRepo.findAll();
 		if (taskList.isEmpty()) {
+			log.error("Couldn't find any task.");
 			throw new TaskNotFoundException("Tasks not found.");
-	} else {
-		return taskList;
+		} else {
+			log.info("Tasks retrieved.");
+			return taskList;
 		}
 	}
-	
 
 	public Task findById(Long id) {
 		Optional<Task> task = taskRepo.findById(id);
 		if (task.isEmpty()) {
+			log.error("Couldn't find task with ID: " + id);
 			throw new TaskNotFoundException();
-	} else {
-		return task.get();
+		} else {
+			log.info("Task with ID " + id + " retrieved.");
+			return task.get();
 		}
 	}
 
 	public Task save(Task task) {
+		log.info("Task with ID " + task.getId() + " saved sucessfully.");
 		return taskRepo.save(task);
 	}
 
@@ -47,10 +53,12 @@ public class TaskService {
 		Optional<Task> oldTask = taskRepo.findById(id);
 		oldTask.get().setName(task.getName());
 		oldTask.get().setFinished(task.isFinished());
+		log.info("Task with ID " + oldTask.get().getId() + " sucessfully updated.");
 		return taskRepo.save(oldTask.get());
 	}
 
 	public void deleteTask(Long id) {
 		taskRepo.deleteById(id);
+		log.info("Task with ID " + id + " sucessfully deleted.");
 	}
 }

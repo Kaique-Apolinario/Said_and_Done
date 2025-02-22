@@ -11,13 +11,8 @@ export class TasksService {
   private apiUrl: string = "http://localhost:8080/";
 
   getTasks():Observable<Task[]>{
-    return this.http.get<Task[]>(this.apiUrl).pipe(
-      retry(1),
-     catchError(error => {
-      alert("An error occurred. Sorry! Try reloading the page.")
-      throw error;
+    return this.http.get<Task[]>(this.apiUrl)
       console.log("Failed to retrieve tasks from the database.")
-     }));
   } 
 
   getTaskById(taskId: number):Observable<Task> {
