@@ -1,4 +1,4 @@
-package com.kaiqueapol.smartodo.controller;
+package com.kaiqueapol.taskmanager.controller;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kaiqueapol.smartodo.entities.Task;
-import com.kaiqueapol.smartodo.services.TaskService;
+import com.kaiqueapol.taskmanager.entities.Task;
+import com.kaiqueapol.taskmanager.services.TaskService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;

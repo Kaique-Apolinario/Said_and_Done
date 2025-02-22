@@ -1,4 +1,4 @@
-package com.kaiqueapol.smartodo.exceptions;
+package com.kaiqueapol.taskmanager.exceptions;
 
 public class TaskNotFoundException extends RuntimeException {
 

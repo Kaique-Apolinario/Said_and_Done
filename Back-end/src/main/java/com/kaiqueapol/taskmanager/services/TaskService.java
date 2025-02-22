@@ -1,13 +1,13 @@
-package com.kaiqueapol.smartodo.services;
+package com.kaiqueapol.taskmanager.services;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.kaiqueapol.smartodo.entities.Task;
-import com.kaiqueapol.smartodo.exceptions.TaskNotFoundException;
-import com.kaiqueapol.smartodo.repositories.TaskRepository;
+import com.kaiqueapol.taskmanager.entities.Task;
+import com.kaiqueapol.taskmanager.exceptions.TaskNotFoundException;
+import com.kaiqueapol.taskmanager.repositories.TaskRepository;
 
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;

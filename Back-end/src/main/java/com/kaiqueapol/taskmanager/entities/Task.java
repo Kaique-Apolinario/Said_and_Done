@@ -1,4 +1,4 @@
-package com.kaiqueapol.smartodo.entities;
+package com.kaiqueapol.taskmanager.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

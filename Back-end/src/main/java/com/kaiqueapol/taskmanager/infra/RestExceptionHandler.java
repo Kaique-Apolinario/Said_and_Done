@@ -1,4 +1,4 @@
-package com.kaiqueapol.smartodo.infra;
+package com.kaiqueapol.taskmanager.infra;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.kaiqueapol.smartodo.exceptions.TaskNotFoundException;
+import com.kaiqueapol.taskmanager.exceptions.TaskNotFoundException;
 
 @ControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
