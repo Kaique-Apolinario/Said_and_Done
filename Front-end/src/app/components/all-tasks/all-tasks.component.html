@@ -2,7 +2,8 @@
     <app-header></app-header>
     @for (task of taskList; track task.id){
     <li [ngClass]='{"concluded": task.finished}' (dblclick)="toggleStatus(task)">
-        <p class="text-capitalize text-truncate m-0" [ngClass]='{"fst-italic text-decoration-line-through": task.finished}'> {{task.name}}</p>
+        <p class="text-capitalize text-truncate m-0"
+            [ngClass]='{"fst-italic text-decoration-line-through": task.finished}'> {{task.name}}</p>
         <div class="TrashNPencil">
             <i class="fa-solid fa-trash" (click)="deleteTask(task)"></i>
             <i class="fa-solid fa-pencil" (click)="updateTask(task)" routerLink="/update"></i>

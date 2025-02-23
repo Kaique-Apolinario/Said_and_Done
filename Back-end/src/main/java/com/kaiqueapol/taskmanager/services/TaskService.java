@@ -26,11 +26,10 @@ public class TaskService {
 		List<Task> taskList = taskRepo.findAll();
 		if (taskList.isEmpty()) {
 			log.error("Couldn't find any task.");
-			throw new TaskNotFoundException("Tasks not found.");
 		} else {
 			log.info("Tasks retrieved.");
-			return taskList;
 		}
+		return taskList;
 	}
 
 	public Task findById(Long id) {
@@ -58,7 +57,12 @@ public class TaskService {
 	}
 
 	public void deleteTask(Long id) {
-		taskRepo.deleteById(id);
-		log.info("Task with ID " + id + " sucessfully deleted.");
+		if (taskRepo.findById(id).isPresent()) {
+			taskRepo.deleteById(id);
+			log.info("Task with ID " + id + " sucessfully deleted.");
+		} else {
+			log.error("Couldn't find any task with ID " + id);
+			throw new TaskNotFoundException("Tasks not found.");
+		}
 	}
 }
