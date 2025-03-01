@@ -22,8 +22,8 @@ export class CreateComponent {
   sendTaskName(){
     if (!this.addTaskForms.trim()) 
       return alert("Oops! Empty name.");
-    this.taskService.addTasks({"name": this.addTaskForms, "finished": false}).subscribe();
-    this.router.navigateByUrl("/");
+    this.taskService.addTasks({"name": this.addTaskForms, "finished": false}).subscribe( () => 
+      this.router.navigateByUrl("/"));
     
   }
 }

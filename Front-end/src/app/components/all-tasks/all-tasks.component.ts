@@ -1,4 +1,4 @@
-import { Component, inject, OnInit} from '@angular/core';
+import { Component, inject, OnInit, signal} from '@angular/core';
 import { Task } from '../../entity/Task';
 import { TasksService } from '../../services/tasks.service';
 import { HeaderComponent } from '../header/header.component';
@@ -17,18 +17,18 @@ export class AllTasksComponent implements OnInit{
   private taskService:TasksService = inject(TasksService)
   private router:Router = inject(Router)
 
-  taskList:Task[] = [];
+  taskList = signal<Task[]>([]);
 
 
   ngOnInit(): void {
-    this.taskService.getTasks().subscribe((response) => {this.taskList = response});
+    this.taskService.getTasks().subscribe((response) => {this.taskList.set(response)});
+    console.log("why to care ngoninit");
   }
-
 
   deleteTask(task: Task) {
-    this.taskService.deleteTask(task).subscribe(() => {this.taskList = this.taskList.filter(taskInList => taskInList != task)});
+    this.taskService.deleteTask(task).subscribe(() => {this.taskList.set(this.taskList().filter((taskFromList) => taskFromList !== task))})
   }
-
+  
   updateTask(task: Task){
       this.router.navigate(["/update", task.id]).catch(e => {
         alert("An error occurred. Sorry! Try reloading the page"),

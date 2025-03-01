@@ -41,7 +41,7 @@ export class UpdateComponent implements OnInit{
   updateName(){
     if (!this.newTask.name.trim()) 
       return alert("Oops! Empty name.");
-    this.taskService.updateTask(this.taskFromId, this.newTask).subscribe();
-    this.router.navigateByUrl("/");
+    this.taskService.updateTask(this.taskFromId, this.newTask).subscribe(() => 
+      this.router.navigateByUrl("/"));
   }
 }

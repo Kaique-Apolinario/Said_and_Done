@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Task } from '../entity/Task';
-import { catchError, Observable, of, retry } from 'rxjs';
+import { catchError, delay, lastValueFrom, Observable, of, retry } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -26,10 +26,11 @@ export class TasksService {
       console.log("Failed to retrieve this specific task from the database.")
       throw error;
 
-     }));
+    }));
   } 
 
   addTasks(task:Task):Observable<Task>{
+    console.log("hop (save)")
     return this.http.post<Task>(this.apiUrl + "save", task).pipe(
       retry(1),
      catchError(error => {
@@ -51,8 +52,6 @@ export class TasksService {
 
   updateTask(oldTask:Task, newTask:Task):Observable<Task>{
     return this.http.put<Task>(this.apiUrl + oldTask.id, newTask)
-    
-    
     .pipe(
       retry(1),
      catchError(error => {
