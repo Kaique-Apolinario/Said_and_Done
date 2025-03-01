@@ -22,7 +22,6 @@ export class AllTasksComponent implements OnInit{
 
   ngOnInit(): void {
     this.taskService.getTasks().subscribe((response) => {this.taskList.set(response)});
-    console.log("why to care ngoninit");
   }
 
   deleteTask(task: Task) {

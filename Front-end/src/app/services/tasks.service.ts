@@ -30,7 +30,6 @@ export class TasksService {
   } 
 
   addTasks(task:Task):Observable<Task>{
-    console.log("hop (save)")
     return this.http.post<Task>(this.apiUrl + "save", task).pipe(
       retry(1),
      catchError(error => {
