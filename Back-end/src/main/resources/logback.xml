@@ -28,7 +28,7 @@
         </rollingPolicy>
     </appender>
 
-    <root level="${LOG_LEVEL}">
+    <root level="ERROR">
         <appender-ref ref="RollingFile"/>
         <appender-ref ref="Console"/>
     </root>

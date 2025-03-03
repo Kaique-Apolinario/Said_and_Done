@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.kaiqueapol.taskmanager.entities.Task;
 import com.kaiqueapol.taskmanager.exceptions.TaskNotFoundException;
+import com.kaiqueapol.taskmanager.exceptions.TaskNotSavedException;
 import com.kaiqueapol.taskmanager.repositories.TaskRepository;
 
 import jakarta.transaction.Transactional;
@@ -44,8 +45,10 @@ public class TaskService {
 	}
 
 	public Task save(Task task) {
+		Task savedTask = Optional.ofNullable(taskRepo.save(task)).orElseThrow(TaskNotSavedException::new);
+
 		log.info("Task with ID " + task.getId() + " saved sucessfully.");
-		return taskRepo.save(task);
+		return savedTask;
 	}
 
 	public Task updateTask(Long id, Task task) {

@@ -1,6 +1,7 @@
 package com.kaiqueapol.taskmanager.controller;
 
 import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
@@ -20,6 +21,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -27,9 +29,13 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kaiqueapol.taskmanager.entities.Task;
+import com.kaiqueapol.taskmanager.exceptions.TaskNotFoundException;
+import com.kaiqueapol.taskmanager.exceptions.TaskNotSavedException;
+import com.kaiqueapol.taskmanager.infra.RestExceptionHandler;
 import com.kaiqueapol.taskmanager.services.TaskService;
 
 @ExtendWith(MockitoExtension.class)
+@Import(RestExceptionHandler.class)
 public class TaskControllerTest {
 
 	@InjectMocks
@@ -48,7 +54,8 @@ public class TaskControllerTest {
 
 	@BeforeEach
 	void setup() throws JsonProcessingException {
-		mockMvc = MockMvcBuilders.standaloneSetup(taskController).alwaysDo(print()).build();
+		mockMvc = MockMvcBuilders.standaloneSetup(taskController).setControllerAdvice(new RestExceptionHandler())
+				.alwaysDo(print()).build();
 		task = Task.builder().id(1L).name("TaskName").finished(false).build();
 		json = objectMapper.writeValueAsString(task);
 	}
@@ -68,10 +75,10 @@ public class TaskControllerTest {
 
 	@Test
 	void shouldNotFindAllTasksAndReturnNotFound() throws Exception {
-		List<Task> tasks = List.of();
-		when(taskService.findAll()).thenReturn(tasks);
+		when(taskService.findAll()).thenThrow(TaskNotFoundException.class);
 
-		mockMvc.perform(get("/").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isNotFound());
+		mockMvc.perform(get("/").contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isNotFound());
 
 		verify(taskService).findAll();
 		verifyNoMoreInteractions(taskService);
@@ -90,7 +97,7 @@ public class TaskControllerTest {
 
 	@Test
 	void shouldNotFindSpecificTaskAndReturnNotFound() throws Exception {
-		when(taskService.findById(task.getId())).thenReturn(null);
+		when(taskService.findById(task.getId())).thenThrow(TaskNotFoundException.class);
 
 		mockMvc.perform(get("/" + task.getId()).contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isNotFound());
@@ -113,6 +120,8 @@ public class TaskControllerTest {
 
 	@Test
 	void shouldNotSaveTaskAndReturnBadRequest() throws Exception {
+		doThrow(new TaskNotSavedException()).when(taskService).save(task);
+
 		mockMvc.perform(post("/save").contentType(MediaType.APPLICATION_JSON).content(json))
 				.andExpect(status().isBadRequest());
 
@@ -128,7 +137,7 @@ public class TaskControllerTest {
 		when(taskService.updateTask(task.getId(), substituteTask)).thenReturn(task);
 
 		mockMvc.perform(put("/" + task.getId()).contentType(MediaType.APPLICATION_JSON).content(substituteTaskJson))
-				.andExpect(status().isOk()).andExpect(content().json(json));
+				.andExpect(content().json(json)).andExpect(status().isOk());
 
 		verify(taskService).updateTask(task.getId(), substituteTask);
 		verifyNoMoreInteractions(taskService);
@@ -136,12 +145,15 @@ public class TaskControllerTest {
 	}
 
 	@Test
-	void shouldNotUpdateTaskAndReturnBadRequest() throws Exception {
+	void shouldNotUpdateTaskAndReturnNotFound() throws Exception {
+
 		Task substituteTask = new Task(2L, "Substitute_Task", false);
 		String substituteTaskJson = objectMapper.writeValueAsString(substituteTask);
 
+		doThrow(new TaskNotFoundException("test")).when(taskService).updateTask(task.getId(), substituteTask);
+
 		mockMvc.perform(put("/" + task.getId()).contentType(MediaType.APPLICATION_JSON).content(substituteTaskJson))
-				.andExpect(status().isBadRequest());
+				.andExpect(status().isNotFound());
 
 		verify(taskService).updateTask(task.getId(), substituteTask);
 		verifyNoMoreInteractions(taskService);
@@ -152,7 +164,8 @@ public class TaskControllerTest {
 	void shouldDeleteTask() throws Exception {
 		doNothing().when(taskService).deleteTask(task.getId());
 
-		mockMvc.perform(delete("/" + task.getId()).contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+		mockMvc.perform(delete("/" + task.getId()).contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isNoContent());
 
 		verify(taskService).deleteTask(task.getId());
 		verifyNoMoreInteractions(taskService);
@@ -160,10 +173,13 @@ public class TaskControllerTest {
 
 	@Test
 	void shouldNotDeleteTaskAndReturnNotFound() throws Exception {
+		doThrow(new TaskNotFoundException()).when(taskService).deleteTask(task.getId());
+
 		mockMvc.perform(delete("/" + task.getId()).contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isNotFound());
 
 		verify(taskService).deleteTask(task.getId());
 		verifyNoMoreInteractions(taskService);
 	}
+
 }

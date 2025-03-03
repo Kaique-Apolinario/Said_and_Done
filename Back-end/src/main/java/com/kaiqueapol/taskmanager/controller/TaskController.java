@@ -32,7 +32,7 @@ public class TaskController {
 		this.taskService = taskService;
 	}
 
-	@GetMapping
+	@GetMapping(value = "/")
 	@Operation(summary = "It gets every task in the API", method = "GET")
 	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Sucess"),
 			@ApiResponse(responseCode = "422", description = "Invalid data requisition"),
@@ -75,13 +75,13 @@ public class TaskController {
 
 	@DeleteMapping("/{id}")
 	@Operation(summary = "It deletes a task in the API", method = "DELETE")
-	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Sucess"),
+	@ApiResponses(value = { @ApiResponse(responseCode = "204", description = "No content. Sucess."),
 			@ApiResponse(responseCode = "422", description = "Invalid data requisition"),
 			@ApiResponse(responseCode = "400", description = "Invalid parameters"),
 			@ApiResponse(responseCode = "500", description = "Internal server error"), })
 	public ResponseEntity<Void> deleteTask(@PathVariable Long id) {
 		taskService.deleteTask(id);
-		return ResponseEntity.ok().build();
+		return ResponseEntity.noContent().build();
 	}
 
 }
