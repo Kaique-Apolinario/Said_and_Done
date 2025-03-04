@@ -1,6 +1,7 @@
-![](C:\Users\KaiiaK\Documents\Projects\CRUD todolist\CRUD-to-do-list-RECENT\ToDoCrud\Front-end\src\assets\Preview.gif)
+<h1 align="center"> Task Manager</h1>
 
-# <h1 align="center"> Task Manager</h1>
+
+![PreviewGif](Front-end/src/assets/Preview.gif)
 
 ------
 
@@ -27,7 +28,6 @@ This is Task Manager Project, a fun and useful FullStack application, which uses
     * Logging
       * SLF4J
   
-* Deploy
 
 ### Swagger Documentation
 
@@ -85,28 +85,28 @@ ng serve --o
 
 #####  Create task
 
-![](C:\Users\KaiiaK\Documents\Projects\CRUD todolist\CRUD-to-do-list-RECENT\ToDoCrud\Front-end\src\assets\CreateTask.gif)
+![CreateTask](Front-end/src/assets/CreateTask.gif)
 
 You can insert all of the tasks you need to do in a day quickly.
 
 ##### Update task's name
-![](C:\Users\KaiiaK\Documents\Projects\CRUD todolist\CRUD-to-do-list-RECENT\ToDoCrud\Front-end\src\assets\UpdateTask.gif)
+![UpdateTask](Front-end/src/assets/UpdateTask.gif)
 
 You can also edit the name of a task. OBS: The name of the task must not be empty!
 
 #####  Finish task
-![](C:\Users\KaiiaK\Documents\Projects\CRUD todolist\CRUD-to-do-list-RECENT\ToDoCrud\Front-end\src\assets\FinishTask.gif)
+![FinishTask](Front-end/src/assets/FinishTask.gif)
 
 Double-click to mark a task as finished! Do the same to unmark it.
 
 ##### Delete task
-![](C:\Users\KaiiaK\Documents\Projects\CRUD todolist\CRUD-to-do-list-RECENT\ToDoCrud\Front-end\src\assets\DeleteTask.gif)
+![DeleteTask](Front-end/src/assets/DeleteTask.gif)
 
 Delete a task by clicking in the trash icon on the left.
 
 ######  Responsiveness
 
-![](C:\Users\KaiiaK\Documents\Projects\CRUD todolist\CRUD-to-do-list-RECENT\ToDoCrud\Front-end\src\assets\Responsiveness.gif)
+![Responsiveness](Front-end/src/assets/Responsiveness.gif)
 
 
 
@@ -131,7 +131,7 @@ Code under MIT License.
   <tbody>
     <tr>
       <td align="center" valign="top" width="15%">
-          <img src="C:\Users\KaiiaK\Downloads\KaiqueApolinário.png" width="200px;" alt="Kaique Apolinário"/>
+          <img src="Front-end/src/assets/KaiqueApolinário.png" width="200px;" alt="Kaique Apolinário"/>
           <br />
           <sub>
               <b>Kaique Apolinário 🙋‍♂️👨‍💻 </b>
