@@ -7,6 +7,8 @@
 
 ## About The Project
 
+> *Se você quiser ler a versão em português 🇧🇷, <a href="/READMEptbr.md">clique aqui</a>*
+
 Welcome! 
 
 This is Task Manager Project, a fun and useful FullStack application, which uses Java Spring Boot, Angular and PostgreSQL as the main technologies to build the API! Add, update and delete your daily tasks. Scroll down to see more details!
@@ -72,12 +74,13 @@ ng serve --o
 
 
 
-## Pre-requisite
+## Prerequisites
 
 * Java 17+
 * Maven
 * Node.js
 * IDE, such as VS Code and Eclipse/IntelliJ IDEA
+* PostgreSQL (If you don't have it, there's an in-memory database (H2) configuration in applications.properties)
 
 
 
@@ -102,13 +105,11 @@ Double-click to mark a task as finished! Do the same to unmark it.
 ##### Delete task
 ![DeleteTask](Front-end/src/assets/DeleteTask.gif)
 
-Delete a task by clicking in the trash icon on the left.
+Delete a task by clicking in the trash icon on the right.
 
 ######  Responsiveness
 
 ![Responsiveness](Front-end/src/assets/Responsiveness.gif)
-
-
 
 
 
