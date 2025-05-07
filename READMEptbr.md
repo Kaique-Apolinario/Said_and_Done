@@ -1,4 +1,4 @@
-<h1 align="center"> Task Manager</h1>
+<h1 align="center"> Dito e Feito - Gerenciador de pendências </h1>
 
 
 ![PreviewGif](Front-end/src/assets/Preview.gif)
@@ -9,7 +9,7 @@
 
 Bem-vindo!
 
-Este é o projeto Gerenciador de Tarefas, uma aplicação FullStack divertida e útil, que usa Java Spring Boot, Angular e PostgreSQL como principais tecnologias para construir a API! Adicione, atualize e exclua suas tarefas diárias. Role para baixo para ver mais detalhes!
+Este é o projeto Gerenciador de pendências, uma aplicação FullStack divertida e útil, que usa Java Spring Boot, Angular e PostgreSQL como principais tecnologias para construir a API que te ajudará a fazer o que você disse que iria! Adicione, atualize e exclua suas tarefas diárias. Role para baixo para ver mais detalhes!
 
 ### Construído com
 
