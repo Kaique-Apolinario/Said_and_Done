@@ -1,4 +1,4 @@
-<div align="center"><h1 align="center">Said and done - Task Manager</h1></div>
+<div align="center"><h1 align="center">Said and Done - Task Manager</h1></div>
 
 
 ![PreviewGif](Front-end/src/assets/Preview.gif)
