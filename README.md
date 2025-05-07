@@ -1,4 +1,4 @@
-<div align="center"><h1 align="center"> Task Manager</h1></div>
+<div align="center"><h1 align="center">Said and done - Task Manager</h1></div>
 
 
 ![PreviewGif](Front-end/src/assets/Preview.gif)
@@ -11,7 +11,7 @@
 
 Welcome! 
 
-This is Task Manager Project, a fun and useful FullStack application, which uses Java Spring Boot, Angular and PostgreSQL as the main technologies to build the API! Add, update and delete your daily tasks. Scroll down to see more details!
+This is "Said and Done - Task Manager", a fun and useful FullStack application, which uses Java Spring Boot, Angular and PostgreSQL as the main technologies to build the API that'll help you actually do what you said you would! Add, update and delete your daily tasks. Scroll down to see more details!
 
 ### Built with
 
